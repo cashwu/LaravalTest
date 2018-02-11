@@ -87,3 +87,24 @@ Route::group(['prefix' => 'member'], function () {
 Route::get('view', function () {
     return view('welcome');
 });
+
+
+// route 關聯到 controller
+//Route::get('member/info', "MemberController@info");
+
+//Route::get('member/info', ["uses" => "MemberController@info"]);
+
+// 可以使用 any 和 match
+//Route::any('member/info', ["uses" => "MemberController@info"]);
+
+//Route::get('member/info', [
+//    "uses" => "MemberController@info",
+//    "as" => "memberinfo"    
+//]);
+
+// 可以傳參數到 controller
+//Route::any('member/{id}', ["uses" => "MemberController@info"]);
+
+// 限制傳入的參數 
+Route::any('member/{id}', ["uses" => "MemberController@info"])
+->where("id", "[0-9]+");
