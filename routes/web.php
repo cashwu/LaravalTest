@@ -113,3 +113,5 @@ Route::any('member/{id}', ["uses" => "MemberController@info"])
 Route::any('test1', ["uses" => "StudentController@test1"]);
 
 Route::any('query', ["uses" => "StudentController@query"]);
+
+Route::any('update', ["uses" => "StudentController@update"]);

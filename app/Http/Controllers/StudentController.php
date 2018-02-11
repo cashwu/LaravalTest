@@ -35,6 +35,28 @@ class StudentController extends Controller
         ]);
         var_dump($bool);
     }
+
+    public function update()
+    {
+        // $num = DB::table('student')
+        //     ->where('id', 2)
+        //     ->update(['age' => 30]);
+
+        // $num = DB::table("student") ->increment("age");
+        // $num = DB::table("student") ->increment("age", 3);
+        // $num = DB::table("student") ->decrement("age");
+        // $num = DB::table("student") ->decrement("age", 3);
+        
+        // $num = DB::table("student")
+        //         ->where("id", 2)
+        //         ->increment("age");
+
+        $num = DB::table("student")
+                ->where("id", 2)
+                ->decrement("age", 2, ["name" => "ddee"]);
+
+        var_dump($num);
+    }
 }
 
 ?>
