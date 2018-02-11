@@ -72,6 +72,55 @@ class StudentController extends Controller
 
         // DB::table("student")->truncate();
     }
+
+    public function select()
+    {
+        // 設定假資料
+        // $bool = DB::table("student")
+        //     ->insert([
+        //         ["id"=> 1, "name"=> "name1", "age"=> 18],
+        //         ["id"=> 3, "name"=> "name2", "age"=> 19],
+        //         ["id"=> 4, "name"=> "name3", "age"=> 20],
+        //         ["id"=> 5, "name"=> "name4", "age"=> 21],
+        // ]);
+
+        // $students = DB::table("student")->get();
+
+        // $student = DB::table("student")->first();
+
+        // $student = DB::table("student")
+        //         ->orderBy("id", "desc")
+        //         ->first();
+
+        // $student2 = DB::table("student")
+        //         ->where("id", ">=", "2")
+        //         ->get();
+
+        // $student = DB::table("student")
+        //         ->whereRaw("id >= ? and age > ? ", [ 2, 20 ])
+        //         ->get();
+
+        // $names = DB::table("student") ->pluck("name");
+
+        // error 
+        // $names = DB::table("student")
+        //         -> lists("name", "id");
+
+        // $students = DB::table("student")
+        //         ->select("id", "name", "age")
+        //         ->get();
+
+        // dd($students);
+
+        echo "<pre>";
+        DB::table("student")
+                -> orderBy("id")
+                -> chunk(2, function($students){
+                    var_dump($students);
+                    return false;
+        });
+
+    }
 }
 
 ?>
