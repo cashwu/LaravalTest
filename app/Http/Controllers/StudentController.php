@@ -57,6 +57,21 @@ class StudentController extends Controller
 
         var_dump($num);
     }
+
+    public function delete()
+    {
+        // $num = DB::table("student")
+        //         ->where("id", 5)
+        //         ->delete();
+
+        // $num = DB::table("student")
+        //         ->where("id", ">=", 3)
+        //         ->delete();
+
+        // var_dump($num);
+
+        // DB::table("student")->truncate();
+    }
 }
 
 ?>

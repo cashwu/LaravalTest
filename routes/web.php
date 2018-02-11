@@ -115,3 +115,5 @@ Route::any('test1', ["uses" => "StudentController@test1"]);
 Route::any('query', ["uses" => "StudentController@query"]);
 
 Route::any('update', ["uses" => "StudentController@update"]);
+
+Route::any('delete', ["uses" => "StudentController@delete"]);
