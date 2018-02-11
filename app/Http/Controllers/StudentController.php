@@ -20,6 +20,21 @@ class StudentController extends Controller
         // $num = DB::delete('delete from student where id = ?', [1]);
         // var_dump($num);
     }
+
+    public function query()
+    {
+        // $num = DB::table('student') -> insert(['name' => 'tt', 'age' => 18]);
+        // var_dump($num);
+
+        // $id = DB::table('student') -> insertGetId(['name' => 'tttttt', 'age' => 18]);
+        // var_dump($id);
+
+        $bool = DB::table('student') -> insert([
+                ['name' => 'tt1', 'age' => 18],
+                ['name' => 'tt2', 'age' => 20]
+        ]);
+        var_dump($bool);
+    }
 }
 
 ?>
