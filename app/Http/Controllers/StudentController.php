@@ -113,13 +113,27 @@ class StudentController extends Controller
         // dd($students);
 
         echo "<pre>";
-        DB::table("student")
-                -> orderBy("id")
-                -> chunk(2, function($students){
-                    var_dump($students);
-                    return false;
-        });
+        // DB::table("student")
+        //         -> orderBy("id")
+        //         -> chunk(2, function($students){
+        //             var_dump($students);
+        //             return false;
+        // });
 
+    }
+
+    public function aggregate()
+    {
+        // $num = DB::table("student")->count();
+
+        // $max = DB::table("student")->max("age");
+
+        // $min = DB::table("student")->min("age");
+
+        // $avg = DB::table("student")->avg("age");
+
+        $sum = DB::table("student")->sum("age");
+        var_dump($sum);
     }
 }
 

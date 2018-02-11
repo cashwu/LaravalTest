@@ -119,3 +119,5 @@ Route::any('update', ["uses" => "StudentController@update"]);
 Route::any('delete', ["uses" => "StudentController@delete"]);
 
 Route::any('select', ["uses" => "StudentController@select"]);
+
+Route::any('aggregate', ["uses" => "StudentController@aggregate"]);
