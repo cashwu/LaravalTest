@@ -108,3 +108,6 @@ Route::get('view', function () {
 // 限制傳入的參數 
 Route::any('member/{id}', ["uses" => "MemberController@info"])
 ->where("id", "[0-9]+");
+
+
+Route::any('test1', ["uses" => "StudentController@test1"]);
