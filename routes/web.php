@@ -125,3 +125,5 @@ Route::any('aggregate', ["uses" => "StudentController@aggregate"]);
 Route::any('orm', ["uses" => "StudentController@orm"]);
 
 Route::any('ormCreate', ["uses" => "StudentController@ormCreate"]);
+
+Route::any('ormUpdate', ["uses" => "StudentController@ormUpdate"]);

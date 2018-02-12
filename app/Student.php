@@ -31,8 +31,9 @@ class Student extends Model
     }
 
     // 日期格式不 format 直接回傳 timestamps
-    protected function asDateTime($value)
-    {
-        return $value;
-    }
+    // update 時這裡會出錯
+//    protected function asDateTime($value)
+//    {
+//        return $value;
+//    }
 }

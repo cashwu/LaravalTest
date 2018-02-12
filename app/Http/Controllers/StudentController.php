@@ -209,5 +209,19 @@ class StudentController extends Controller
         $bool = $student->save();
         dd($student);
     }
+
+    public function ormUpdate()
+    {
+        // 通過 model 更新數據
+
+//        $student = Student::find(11);
+//        $student->name= "ccc";
+//        $bool = $student->save();
+//        dd($bool);
+
+        $num = Student::where("id", ">", "10")
+            ->update(["age" => 55]);
+        dd($num);
+    }
 }
 
