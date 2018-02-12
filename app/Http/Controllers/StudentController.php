@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\DB; 
+use App\Student;
+use Illuminate\Support\Facades\DB;
 
 class StudentController extends Controller
 {
@@ -10,7 +11,7 @@ class StudentController extends Controller
     {
         // $students = DB::select('select * from student where id = ?', [ 1 ]);
         // dd($students);
-        
+
         // $bool = DB::insert('insert into student (name, age) values (?, ?)', ['cash', '18']);
         // var_dump($bool);
 
@@ -29,9 +30,9 @@ class StudentController extends Controller
         // $id = DB::table('student') -> insertGetId(['name' => 'tttttt', 'age' => 18]);
         // var_dump($id);
 
-        $bool = DB::table('student') -> insert([
-                ['name' => 'tt1', 'age' => 18],
-                ['name' => 'tt2', 'age' => 20]
+        $bool = DB::table('student')->insert([
+            ['name' => 'tt1', 'age' => 18],
+            ['name' => 'tt2', 'age' => 20]
         ]);
         var_dump($bool);
     }
@@ -46,14 +47,14 @@ class StudentController extends Controller
         // $num = DB::table("student") ->increment("age", 3);
         // $num = DB::table("student") ->decrement("age");
         // $num = DB::table("student") ->decrement("age", 3);
-        
+
         // $num = DB::table("student")
         //         ->where("id", 2)
         //         ->increment("age");
 
         $num = DB::table("student")
-                ->where("id", 2)
-                ->decrement("age", 2, ["name" => "ddee"]);
+            ->where("id", 2)
+            ->decrement("age", 2, ["name" => "ddee"]);
 
         var_dump($num);
     }
@@ -135,6 +136,39 @@ class StudentController extends Controller
         $sum = DB::table("student")->sum("age");
         var_dump($sum);
     }
+
+    public function orm()
+    {
+        // all
+//        $students = Student::all();
+
+        // find one
+//        $student = Student::find(3);
+
+        // find or fail => page not found
+//        $student = Student::findOrFail(1);
+
+//        $student = Student::get();
+
+//        $student = Student::where("id", ">", "2")
+//                -> orderBy("age", "desc")
+//                -> first();
+
+//        dd($student);
+
+//        echo "<pre>";
+//        Student::chunk(2, function($students) {
+//            dd($students);
+//        });
+
+        // aggregate
+
+//        $num = Student::count()ction CheckinProject
+
+        $num = Student::where("id", ">", "2")
+            ->max("age");
+
+        dd($num);
+    }
 }
 
-?>
