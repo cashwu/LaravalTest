@@ -11,6 +11,8 @@
 |
 */
 
+use Illuminate\Routing\Route;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -109,15 +111,14 @@ Route::get('view', function () {
 Route::any('member/{id}', ["uses" => "MemberController@info"])
 ->where("id", "[0-9]+");
 
+Route::group(["prefix" => "user"], function (){
 
-Route::any('test1', ["uses" => "StudentController@test1"]);
+    Route::group(["prefix" => "auth"], function(){
 
-Route::any('query', ["uses" => "StudentController@query"]);
+        Route::get("/sign-up", "UserAuthController@signUpPage");
 
-Route::any('update', ["uses" => "StudentController@update"]);
+        Route::post("/sign-up", "UserAuthController@signUpProcess");
+    });
 
-Route::any('delete', ["uses" => "StudentController@delete"]);
+});
 
-Route::any('select', ["uses" => "StudentController@select"]);
-
-Route::any('aggregate', ["uses" => "StudentController@aggregate"]);

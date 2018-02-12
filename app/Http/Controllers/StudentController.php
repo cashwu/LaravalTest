@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\DB; 
+use Illuminate\Support\Facades\DB;
 
 class StudentController extends Controller
 {
@@ -10,7 +10,7 @@ class StudentController extends Controller
     {
         // $students = DB::select('select * from student where id = ?', [ 1 ]);
         // dd($students);
-        
+
         // $bool = DB::insert('insert into student (name, age) values (?, ?)', ['cash', '18']);
         // var_dump($bool);
 
@@ -51,7 +51,7 @@ class StudentController extends Controller
         //         ->where("id", 2)
         //         ->increment("age");
 
-        $num = DB::table("student")
+        $num = DB::kable("student")
                 ->where("id", 2)
                 ->decrement("age", 2, ["name" => "ddee"]);
 
@@ -92,9 +92,9 @@ class StudentController extends Controller
         //         ->orderBy("id", "desc")
         //         ->first();
 
-        // $student2 = DB::table("student")
+/*        // $student2 = DB::table("student")
         //         ->where("id", ">=", "2")
-        //         ->get();
+        //         ->get();*/
 
         // $student = DB::table("student")
         //         ->whereRaw("id >= ? and age > ? ", [ 2, 20 ])
@@ -106,11 +106,11 @@ class StudentController extends Controller
         // $names = DB::table("student")
         //         -> lists("name", "id");
 
-        // $students = DB::table("student")
-        //         ->select("id", "name", "age")
-        //         ->get();
+         $students = DB::table("student")
+                 ->select("id", "name", "age")
+                 ->get();
 
-        // dd($students);
+         dd($students);
 
         echo "<pre>";
         // DB::table("student")
