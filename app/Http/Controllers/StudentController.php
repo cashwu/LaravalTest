@@ -171,9 +171,6 @@ class StudentController extends Controller
         dd($num);
     }
 
-    /**
-     *
-     */
     public function ormCreate()
     {
 //        $student = new Student();
@@ -233,12 +230,16 @@ class StudentController extends Controller
 
         // 通過主鍵刪除
 //        $num = Student::destroy(7);
-//        $num = Student::destroy(8, 9);
+        $num = Student::destroy(8, 9);
 //        $num = Student::destroy([4,5]);
 //        dd($num);
 
-        $num = Student::where("id", "=", "1")->delete();
-        dd($num);
+//        $num = Student::where("id", "=", "1")->delete();
+//        dd($num);
+    }
+
+    public function section()
+    {
+        return View("student.section");
     }
 }
-
