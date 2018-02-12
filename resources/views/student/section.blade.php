@@ -1,13 +1,12 @@
-
 @extends("layout")
 
 @section("header")
-header
+    header
 @endsection
 
 
 @section("sidebar")
-   sidebar
+    sidebar
 @endsection
 
 
@@ -37,5 +36,48 @@ header
 
     {{-- include --}}
     @include("student.common", ["msg" => "test 123"])
+
+    @if($name == "cash")
+        i am cash
+    @elseif($name == "aa")
+        i am aa
+    @else
+        who am i
+    @endif
+
+    <br>
+
+    @if(in_array($name, $arr))
+        true
+    @else
+        false
+    @endif
+
+    <br>
+
+    @unless( $name != "cash")
+        i am cash
+    @endunless
+
+    <br>
+
+    @for($i = 0 ; $i < 10; $i++)
+        {{ $i }}
+    @endfor
+
+    <br>
+
+    @foreach($students as $student)
+        {{ $student -> name }},
+    @endforeach
+
+    <br>
+
+    @forelse($students as $student)
+        {{ $student -> name }},
+    @empty
+        null
+    @endforelse
+
 
 @endsection

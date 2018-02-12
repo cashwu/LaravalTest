@@ -240,13 +240,16 @@ class StudentController extends Controller
 
     public function section()
     {
+        $students = []; //Student::get();
+
         $name = "cash";
         $arr = ["cash", "B"];
 
         return View("student.section",
             [
                 "name" => $name,
-                "arr" => $arr
+                "arr" => $arr,
+                "students" => $students,
             ]
         );
     }
