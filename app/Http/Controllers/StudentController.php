@@ -223,5 +223,22 @@ class StudentController extends Controller
             ->update(["age" => 55]);
         dd($num);
     }
+
+    public function ormDelete()
+    {
+        // 通過 model 刪除
+//        $student = Student::find(6);
+//        $bool = $student->delete();
+//        dd($bool);
+
+        // 通過主鍵刪除
+//        $num = Student::destroy(7);
+//        $num = Student::destroy(8, 9);
+//        $num = Student::destroy([4,5]);
+//        dd($num);
+
+        $num = Student::where("id", "=", "1")->delete();
+        dd($num);
+    }
 }
 

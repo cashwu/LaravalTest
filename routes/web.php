@@ -127,3 +127,5 @@ Route::any('orm', ["uses" => "StudentController@orm"]);
 Route::any('ormCreate', ["uses" => "StudentController@ormCreate"]);
 
 Route::any('ormUpdate', ["uses" => "StudentController@ormUpdate"]);
+
+Route::any('ormDelete', ["uses" => "StudentController@ormDelete"]);
