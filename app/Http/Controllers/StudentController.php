@@ -170,5 +170,44 @@ class StudentController extends Controller
 
         dd($num);
     }
+
+    /**
+     *
+     */
+    public function ormCreate()
+    {
+//        $student = new Student();
+//        $student->name = "cc";
+//        $student->age = "22";
+//
+//        $bool = $student->save();
+//
+//        dd($bool);
+
+//        $student = Student::find(10);
+//        echo date("Y-m-d H:i", $student->created_at);
+
+        // 使用 model create，預設不可以批次新增
+//        $student = Student::create(
+//            ["name" => "tc", "age" => 3]
+//        );
+//        dd($student);
+
+
+        // firstOrCreate
+        // 用屬性尋找，找不到就新增，找到就直接返回當個
+//        $student = Student::firstOrCreate(
+//            ["name" => "td"]
+//        );
+//        dd($student);
+
+        // firstOrNew
+        // 用屬性尋找，找不到就返回物件，不新增到 DB
+        $student = Student::firstOrNew(
+            ["name" => "tdww"]
+        );
+        $bool = $student->save();
+        dd($student);
+    }
 }
 
