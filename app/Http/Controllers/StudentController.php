@@ -253,4 +253,9 @@ class StudentController extends Controller
             ]
         );
     }
+
+    public function url()
+    {
+        return "url";
+    }
 }

@@ -1,9 +1,14 @@
 @extends("layout")
 
 @section("header")
-    header
-@endsection
 
+    <p>url -- {{ url("url") }}</p>
+
+    <p>action -- {{ action("StudentController@url")  }}</p>
+
+    <p>route -- {{ route("urlT")  }}</p>
+
+@endsection
 
 @section("sidebar")
     sidebar
