@@ -11,36 +11,35 @@
 |
 */
 
-use Illuminate\Routing\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
-
-// 基礎路由
-Route::get('basic1', function () {
-   return "Hello World";
-});
-
-Route::get('basic3', function () {
-   return "Hello World 33";
-});
-
-// 需在 VerifyCsrfToken 設置排除路由
-Route::post('basic2', function () {
-    return "basic 2";
-});
-
-// 多請求路由
-// 限定 get , post
-Route::match(['get', 'post'], 'match', function () {
-    return "match";
-});
-
-// 任何
-Route::any('any', function () {
-    return "any";
-});
+//
+//// 基礎路由
+//Route::get('basic1', function () {
+//   return "Hello World";
+//});
+//
+//Route::get('basic3', function () {
+//   return "Hello World 33";
+//});
+//
+//// 需在 VerifyCsrfToken 設置排除路由
+//Route::post('basic2', function () {
+//    return "basic 2";
+//});
+//
+//// 多請求路由
+//// 限定 get , post
+//Route::match(['get', 'post'], 'match', function () {
+//    return "match";
+//});
+//
+//// 任何
+//Route::any('any', function () {
+//    return "any";
+//});
 
 
 // 路由參數
@@ -73,22 +72,22 @@ Route::any('any', function () {
 //   return "member url - " . route("center"); 
 //}]); 
 
-// 路由群組
-Route::group(['prefix' => 'member'], function () {
-    
-    Route::get('center', ["as" => "center" ,function () {
-        return "member url - " . route("center"); 
-    }]); 
-
-    Route::get('admin', function () {
-        return "admin"; 
-    }); 
-});
-
-// 路由輸出 view
-Route::get('view', function () {
-    return view('welcome');
-});
+//// 路由群組
+//Route::group(['prefix' => 'member'], function () {
+//
+//    Route::get('center', ["as" => "center" ,function () {
+//        return "member url - " . route("center");
+//    }]);
+//
+//    Route::get('admin', function () {
+//        return "admin";
+//    });
+//});
+//
+//// 路由輸出 view
+//Route::get('view', function () {
+//    return view('welcome');
+//});
 
 
 // route 關聯到 controller
@@ -108,17 +107,17 @@ Route::get('view', function () {
 //Route::any('member/{id}', ["uses" => "MemberController@info"]);
 
 // 限制傳入的參數 
-Route::any('member/{id}', ["uses" => "MemberController@info"])
-->where("id", "[0-9]+");
+//Route::any('member/{id}', ["uses" => "MemberController@info"])
+//->where("id", "[0-9]+");
+
 
 Route::group(["prefix" => "user"], function (){
 
     Route::group(["prefix" => "auth"], function(){
 
-        Route::get("/sign-up", "UserAuthController@signUpPage");
+        Route::get("/signUp", "UserAuthController@signUpGet");
 
-        Route::post("/sign-up", "UserAuthController@signUpProcess");
+        Route::post("/signUp", "UserAuthController@signUpPost");
     });
-
 });
 
