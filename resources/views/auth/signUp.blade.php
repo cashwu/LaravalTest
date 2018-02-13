@@ -12,22 +12,22 @@
             {{ csrf_field() }}
             <label>
                 nickname
-                <input type="text" name="nickname"/>
+                <input type="text" name="nickname" value="{{ old("nickname") }}"/>
             </label>
             <br>
             <label>
                 email
-                <input type="text" name="email"/>
+                <input type="text" name="email" value="{{ old("email") }}"/>
             </label>
             <br>
             <label>
                 password
-                <input type="text" name="password"/>
+                <input type="text" name="password" value="{{ old("password") }}"/>
             </label>
             <br>
             <label>
                 passwordconfirm
-                <input type="text" name="passwordconfirm"/>
+                <input type="text" name="passwordconfirm" value="{{ old("passwordconfirm") }}"/>
             </label>
             <br>
             <label>

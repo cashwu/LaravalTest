@@ -34,7 +34,9 @@ class UserAuthController extends Controller
        $validator = Validator::make($input, $rules);
 
        if ($validator->fails()){
-           return redirect("/user/auth/signUp")->withErrors($validator);
+           return redirect("/user/auth/signUp")
+               ->withErrors($validator)
+               ->withInput();
        }
 
        dd($input);
