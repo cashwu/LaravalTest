@@ -8,6 +8,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Entity\User;
 use Illuminate\Support\Facades\Hash;
 use Validator;
 
@@ -41,6 +42,8 @@ class UserAuthController extends Controller
        }
 
        $input["password"] = Hash::make($input["password"]);
+
+       $user = User::create($input);
 
        dd($input);
        exit;
