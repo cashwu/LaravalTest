@@ -349,6 +349,34 @@ class StudentController extends Controller
 
     public function session2(Request $request)
     {
-        echo Session::get("key-flash");
+       return Session::get("msg", "not data");
+//        echo Session::get("key-flash");
+    }
+
+    public function response()
+    {
+        // return data to json
+//        $data = [
+//            "errCode" => 0,
+//            "errMsg" => "success",
+//            "data" => "cash"
+//        ];
+//
+//        return response()->json($data);
+
+        // redirect
+//        return redirect("session2");
+
+        // redirect and pass temp data (temp session, only one time get)
+//        return redirect("session2")->with("msg", "temp data");
+
+        // redirect using action
+//       return redirect() ->action("StudentController@session2")->with("msg", "temp data");
+
+        // redirect using route
+//        return redirect()->route("s2")->with("msg", "temp data");
+
+        // redirect using back
+        return redirect()->back();
     }
 }

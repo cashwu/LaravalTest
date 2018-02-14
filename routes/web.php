@@ -140,7 +140,10 @@ Route::group(["middleware" => ["web"]], function () {
 
     Route::any('session', ["uses" => "StudentController@session"]);
 
-    Route::any('session2', ["uses" => "StudentController@session2"]);
+    Route::any('session2', ["as" => "s2", "uses" => "StudentController@session2"]);
 
 });
+
+Route::any('response', ["uses" => "StudentController@response"]);
+
 
