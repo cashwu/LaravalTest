@@ -146,4 +146,13 @@ Route::group(["middleware" => ["web"]], function () {
 
 Route::any('response', ["uses" => "StudentController@response"]);
 
+// coming soon page
+Route::any('activity', ["uses" => "StudentController@activity"]);
 
+// activity page
+Route::group(["middleware" => ["activity"]], function () {
+
+    Route::any('activityIng', ["uses" => "StudentController@activityIng"]);
+
+    Route::any('activityEnd', ["uses" => "StudentController@activityEnd"]);
+});

@@ -379,4 +379,19 @@ class StudentController extends Controller
         // redirect using back
         return redirect()->back();
     }
+
+    public function activity()
+    {
+        return "coming soon";
+    }
+
+    public function activityIng()
+    {
+        return "activity ing";
+    }
+
+    public function activityEnd()
+    {
+        return "activity end";
+    }
 }
