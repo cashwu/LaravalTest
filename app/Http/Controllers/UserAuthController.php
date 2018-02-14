@@ -10,6 +10,7 @@ namespace App\Http\Controllers;
 
 use App\Entity\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Validator;
 
 class UserAuthController extends Controller
@@ -45,7 +46,17 @@ class UserAuthController extends Controller
 
        $user = User::create($input);
 
-       dd($input);
-       exit;
+//       $mail_binding = [
+//           "nickname" => $input["nickname"]
+//       ];
+//
+//       Mail::send("email.signUpEmailNotification", $mail_binding,
+//       function ($mail) use ($input){
+//           $mail->to($input["email"]);
+//           $mail->from("cc@cc.com");
+//           $mail->subject("register success");
+//       });
+
+       return redirect("/user/auth/signUp");
     }
 }
