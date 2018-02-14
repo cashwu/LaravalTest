@@ -133,3 +133,5 @@ Route::any('ormDelete', ["uses" => "StudentController@ormDelete"]);
 Route::any('section', ["uses" => "StudentController@section"]);
 
 Route::any('url', [ "as" => "urlT", "uses" => "StudentController@url"]);
+
+Route::any('student/request', [ "uses" => "StudentController@request"]);

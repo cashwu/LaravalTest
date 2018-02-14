@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Student;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class StudentController extends Controller
@@ -258,4 +259,38 @@ class StudentController extends Controller
     {
         return "url";
     }
+
+    public function request(Request $request)
+    {
+        // 1, 取值
+//        echo $request->input("name");
+//        echo $request->input("sex", "unknown");
+
+//        if ($request->has("name")){
+//            echo $request->input("name");
+//        }else{
+//            echo "not get parameter";
+//        }
+
+//        $res = $request->all();
+//        dd($res);
+
+        // 2, 判斷請求類型
+//        echo $request -> method();
+
+//        if ($request->isMethod("Get")) {
+//            echo "Yes";
+//        } else {
+//            echo "No";
+//        }
+
+//        $res = $request->ajax();
+//        var_dump($res);
+
+//        $res = $request-> is("student/*");
+//        var_dump($res);
+
+        echo $request->url();
+    }
+
 }
