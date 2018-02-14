@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class StudentController extends Controller
 {
@@ -293,4 +294,61 @@ class StudentController extends Controller
         echo $request->url();
     }
 
+    public function session(Request $request)
+    {
+        // 1 http request session
+//        $request->session()->put("key1", "val1");
+//       echo $request->session()->get("key1");
+
+
+        // 2 session()
+
+//        session()->put("key2", "val2");
+//        echo session()->get("key2");
+
+        // 3 Session
+//        Session::put("key3", "val3");
+//        echo Session::get("key3");
+//        echo Session::get("key4", "default");
+
+        // put array in session
+//        Session::put(["key4" => "val4"]);
+
+        // put data in session array
+//        Session::push("student", "cc");
+//        Session::push("student", "aa");
+//        $res = Session::get("student");
+//        var_dump($res);
+
+        // get data from session than delete
+//        $res = Session::pull("student");
+//        var_dump($res);
+
+        // get all session value
+//        $res = Session::all();
+//        dd($res);
+
+        // has key in session
+//        if (Session::has("key11")) {
+//            $res = Session::all();
+//            dd($res);
+//        }else{
+//            echo "not key 11";
+//        }
+
+
+        // using key remove session
+//        Session::forget("key1");
+
+        // clear all session
+//        Session::flush();
+
+        // temp session , only one time get
+        Session::flash("key-flash", "val-flash");
+    }
+
+    public function session2(Request $request)
+    {
+        echo Session::get("key-flash");
+    }
 }

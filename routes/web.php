@@ -17,11 +17,11 @@ Route::get('/', function () {
 
 // 基礎路由
 Route::get('basic1', function () {
-   return "Hello World";
+    return "Hello World";
 });
 
 Route::get('basic3', function () {
-   return "Hello World 33";
+    return "Hello World 33";
 });
 
 // 需在 VerifyCsrfToken 設置排除路由
@@ -73,14 +73,14 @@ Route::any('any', function () {
 
 // 路由群組
 Route::group(['prefix' => 'member'], function () {
-    
-    Route::get('center', ["as" => "center" ,function () {
-        return "member url - " . route("center"); 
-    }]); 
+
+    Route::get('center', ["as" => "center", function () {
+        return "member url - " . route("center");
+    }]);
 
     Route::get('admin', function () {
-        return "admin"; 
-    }); 
+        return "admin";
+    });
 });
 
 // 路由輸出 view
@@ -107,7 +107,7 @@ Route::get('view', function () {
 
 // 限制傳入的參數 
 Route::any('member/{id}', ["uses" => "MemberController@info"])
-->where("id", "[0-9]+");
+    ->where("id", "[0-9]+");
 
 
 Route::any('test1', ["uses" => "StudentController@test1"]);
@@ -132,6 +132,15 @@ Route::any('ormDelete', ["uses" => "StudentController@ormDelete"]);
 
 Route::any('section', ["uses" => "StudentController@section"]);
 
-Route::any('url', [ "as" => "urlT", "uses" => "StudentController@url"]);
+Route::any('url', ["as" => "urlT", "uses" => "StudentController@url"]);
 
-Route::any('student/request', [ "uses" => "StudentController@request"]);
+Route::any('student/request', ["uses" => "StudentController@request"]);
+
+Route::group(["middleware" => ["web"]], function () {
+
+    Route::any('session', ["uses" => "StudentController@session"]);
+
+    Route::any('session2', ["uses" => "StudentController@session2"]);
+
+});
+
