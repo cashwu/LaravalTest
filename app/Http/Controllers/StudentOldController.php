@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
-class StudentController extends Controller
+class StudentOldController extends Controller
 {
     public function test1()
     {
@@ -371,7 +371,7 @@ class StudentController extends Controller
 //        return redirect("session2")->with("msg", "temp data");
 
         // redirect using action
-//       return redirect() ->action("StudentController@session2")->with("msg", "temp data");
+//       return redirect() ->action("StudentOldController@session2")->with("msg", "temp data");
 
         // redirect using route
 //        return redirect()->route("s2")->with("msg", "temp data");

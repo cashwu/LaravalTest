@@ -4,7 +4,7 @@
 
     <p>url -- {{ url("url") }}</p>
 
-    <p>action -- {{ action("StudentController@url")  }}</p>
+    <p>action -- {{ action("StudentOldController")  }}</p>
 
     <p>route -- {{ route("urlT")  }}</p>
 

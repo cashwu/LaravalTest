@@ -110,49 +110,49 @@ Route::any('member/{id}', ["uses" => "MemberController@info"])
     ->where("id", "[0-9]+");
 
 
-Route::any('test1', ["uses" => "StudentController@test1"]);
+Route::any('test1', ["uses" => "StudentOldController@test1"]);
 
-Route::any('query', ["uses" => "StudentController@query"]);
+Route::any('query', ["uses" => "StudentOldController@query"]);
 
-Route::any('update', ["uses" => "StudentController@update"]);
+Route::any('update', ["uses" => "StudentOldController@update"]);
 
-Route::any('delete', ["uses" => "StudentController@delete"]);
+Route::any('delete', ["uses" => "StudentOldController@delete"]);
 
-Route::any('select', ["uses" => "StudentController@select"]);
+Route::any('select', ["uses" => "StudentOldController@select"]);
 
-Route::any('aggregate', ["uses" => "StudentController@aggregate"]);
+Route::any('aggregate', ["uses" => "StudentOldController@aggregate"]);
 
-Route::any('orm', ["uses" => "StudentController@orm"]);
+Route::any('orm', ["uses" => "StudentOldController@orm"]);
 
-Route::any('ormCreate', ["uses" => "StudentController@ormCreate"]);
+Route::any('ormCreate', ["uses" => "StudentOldController@ormCreate"]);
 
-Route::any('ormUpdate', ["uses" => "StudentController@ormUpdate"]);
+Route::any('ormUpdate', ["uses" => "StudentOldController@ormUpdate"]);
 
-Route::any('ormDelete', ["uses" => "StudentController@ormDelete"]);
+Route::any('ormDelete', ["uses" => "StudentOldController@ormDelete"]);
 
-Route::any('section', ["uses" => "StudentController@section"]);
+Route::any('section', ["uses" => "StudentOldController@section"]);
 
-Route::any('url', ["as" => "urlT", "uses" => "StudentController@url"]);
+Route::any('url', ["as" => "urlT", "uses" => "StudentOldController@url"]);
 
-Route::any('student/request', ["uses" => "StudentController@request"]);
+Route::any('student/request', ["uses" => "StudentOldController@request"]);
 
 Route::group(["middleware" => ["web"]], function () {
 
-    Route::any('session', ["uses" => "StudentController@session"]);
+    Route::any('session', ["uses" => "StudentOldController@session"]);
 
-    Route::any('session2', ["as" => "s2", "uses" => "StudentController@session2"]);
+    Route::any('session2', ["as" => "s2", "uses" => "StudentOldController@session2"]);
 
 });
 
-Route::any('response', ["uses" => "StudentController@response"]);
+Route::any('response', ["uses" => "StudentOldController@response"]);
 
 // coming soon page
-Route::any('activity', ["uses" => "StudentController@activity"]);
+Route::any('activity', ["uses" => "StudentOldController@activity"]);
 
 // activity page
 Route::group(["middleware" => ["activity"]], function () {
 
-    Route::any('activityIng', ["uses" => "StudentController@activityIng"]);
+    Route::any('activityIng', ["uses" => "StudentOldController@activityIng"]);
 
-    Route::any('activityEnd', ["uses" => "StudentController@activityEnd"]);
+    Route::any('activityEnd', ["uses" => "StudentOldController@activityEnd"]);
 });
