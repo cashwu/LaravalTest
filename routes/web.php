@@ -11,9 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get("/", ["uses" => "StudentController@index"]);
+
+
+
+
+
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
 // 基礎路由
 Route::get('basic1', function () {
