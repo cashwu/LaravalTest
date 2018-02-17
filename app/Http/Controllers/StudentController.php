@@ -25,6 +25,43 @@ class StudentController extends Controller
     public function create(Request $request)
     {
         if ($request->isMethod("POST")) {
+
+            // controller validate
+//            $this->validate($request, [
+//                "Student.name" => "required|min:2|max:20",
+//                "Student.age" => "required|integer",
+//                "Student.sex" => "required|integer"
+//            ], [
+//                "required" => ":attribute 必填",
+//                "min" => ":attribute 長度不符合要求",
+//                "integer" => ":attribute 為整數"
+//            ], [
+//                "Student.name" => "Name",
+//                "Student.age" => "Age",
+//                "Student.sex" => "Sex",
+//            ]);
+
+            // validate class
+
+            $validator = \Validator::make($request->input(),
+                [
+                    "Student.name" => "required|min:2|max:20",
+                    "Student.age" => "required|integer",
+                    "Student.sex" => "required|integer"
+                ], [
+                    "required" => ":attribute 必填",
+                    "min" => ":attribute 長度不符合要求",
+                    "integer" => ":attribute 為整數"
+                ], [
+                    "Student.name" => "Name",
+                    "Student.age" => "Age",
+                    "Student.sex" => "Sex",
+                ]);
+
+            if ($validator->fails()){
+                return redirect()->back()->withErrors($validator)->withInput();
+            }
+
             $data = $request->input("Student");
             if (Student::create($data)) {
                 return redirect("/")->with("success", "add success");
