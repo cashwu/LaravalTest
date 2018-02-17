@@ -14,6 +14,8 @@ class Student extends Model
 {
     protected $table = "student";
 
+    protected $fillable = ["name", "age", "sex"];
+
     // 自動新增 timestamps
     public $timestamps = true;
 

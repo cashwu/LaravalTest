@@ -27,10 +27,12 @@
         <div class="col-md-2">
             @section("leftmenu")
                 <div class="list-group">
-                    <a href="#" class="list-group-item active">
+                    <a href="{{ url("/")  }}" class="list-group-item
+                        {{ Request::getPathInfo() == "/" ? "active" : ""  }}">
                         <i class="fa fa-fw fa-users"></i> 学生列表
                     </a>
-                    <a href="#" class="list-group-item">
+                    <a href="{{ url("/create")  }}" class="list-group-item
+                        {{ Request::getPathInfo() == "/create" ? "active" : ""  }}">
                         <i class="fa fa-fw fa-plus"></i> 新增学生
                     </a>
                 </div>

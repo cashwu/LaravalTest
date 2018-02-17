@@ -12,9 +12,15 @@
 */
 
 
-Route::get("/", ["uses" => "StudentController@index"]);
 
 
+Route::group(["middleware" => ["web"]], function () {
+
+    Route::get("/", ["uses" => "StudentController@index"]);
+    Route::any("/create", ["uses" => "StudentController@create"]);
+    Route::any("/save", ["uses" => "StudentController@save"]);
+
+});
 
 
 
