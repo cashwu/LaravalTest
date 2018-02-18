@@ -21,6 +21,7 @@ Route::group(["middleware" => ["web"]], function () {
     Route::any("/save", ["uses" => "StudentController@save"]);
     Route::any("/update/{id}", ["uses" => "StudentController@update"]);
     Route::any("/detail/{id}", ["uses" => "StudentController@detail"]);
+    Route::any("/delete/{id}", ["uses" => "StudentController@delete"]);
 });
 
 

@@ -95,7 +95,7 @@ class StudentController extends Controller
     {
         $student = Student::find($id);
 
-        if ($request -> isMethod("POST")) {
+        if ($request->isMethod("POST")) {
 
             $this->validate($request, [
                 "Student.name" => "required|min:2|max:20",
@@ -111,12 +111,12 @@ class StudentController extends Controller
                 "Student.sex" => "Sex",
             ]);
 
-            $data = $request -> input("Student");
-            $student -> name = $data["name"];
-            $student -> age = $data["age"];
-            $student -> sex = $data["sex"];
+            $data = $request->input("Student");
+            $student->name = $data["name"];
+            $student->age = $data["age"];
+            $student->sex = $data["sex"];
 
-            if ($student->save()){
+            if ($student->save()) {
                 return redirect("/")->with("success", "update success");
             }
         }
@@ -130,8 +130,19 @@ class StudentController extends Controller
     {
         $student = Student::find($id);
 
-       return  view("student.detail", [
-           "student" => $student
-       ]);
+        return view("student.detail", [
+            "student" => $student
+        ]);
+    }
+
+    public function delete($id)
+    {
+        $student = Student::find($id);
+
+        if ($student->delete()) {
+            return redirect("/")->with("success", "delete success");
+        } else {
+            return redirect("/")->with("error", "delete failed");
+        }
     }
 }

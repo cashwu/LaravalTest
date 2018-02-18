@@ -28,7 +28,7 @@
                     <td>
                         <a href="{{ url("detail", ["id" => $student -> id])  }}" class="btn btn-default btn-xs"><i class="fa fa-fw fa-archive"></i> 详情</a>
                         <a href="{{ url("update", ["id" => $student -> id]) }}" class="btn btn-default btn-xs"><i class="fa fa-fw fa-edit"></i> 修改</a>
-                        <a href="https://www.baidu.com" class="btn btn-danger btn-xs"
+                        <a href="{{ url("delete", ["id" => $student -> id]) }}" class="btn btn-danger btn-xs"
                            onclick="return confirm('is del or not???')"><i class="fa fa-fw fa-trash-o"></i> 删除</a>
                     </td>
                 </tr>
