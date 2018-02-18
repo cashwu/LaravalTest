@@ -24,6 +24,8 @@ class StudentController extends Controller
 
     public function create(Request $request)
     {
+        $student = new Student();
+
         if ($request->isMethod("POST")) {
 
             // controller validate
@@ -69,7 +71,9 @@ class StudentController extends Controller
                 return redirect()->back()->with("error", "add filed");
             }
         }
-        return view("student.create");
+        return view("student.create", [
+            "student" => $student
+        ]);
     }
 
     public function save(Request $request)

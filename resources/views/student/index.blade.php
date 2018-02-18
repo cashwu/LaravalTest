@@ -23,7 +23,7 @@
                     <th scope="row">{{ $student -> id  }}</th>
                     <td>{{ $student->name }}</td>
                     <td>{{$student->age}}</td>
-                    <td>{{$student-> sex}}</td>
+                    <td>{{ $student->sex($student-> sex) }}</td>
                     <td>{{date("Y-m-d", $student-> created_at)}}</td>
                     <td>
                         <a href="javascript:" class="btn btn-default btn-xs"><i class="fa fa-fw fa-archive"></i> 详情</a>
@@ -38,7 +38,7 @@
 
     </div>
     <div class="pull-right">
-       {{$students->render()}}
+        {{$students->render()}}
     </div>
 
 @endsection
