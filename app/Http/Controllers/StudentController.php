@@ -125,4 +125,13 @@ class StudentController extends Controller
             "student" => $student
         ]);
     }
+
+    public function detail($id)
+    {
+        $student = Student::find($id);
+
+       return  view("student.detail", [
+           "student" => $student
+       ]);
+    }
 }

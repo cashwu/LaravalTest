@@ -20,7 +20,7 @@ Route::group(["middleware" => ["web"]], function () {
     Route::any("/create", ["uses" => "StudentController@create"]);
     Route::any("/save", ["uses" => "StudentController@save"]);
     Route::any("/update/{id}", ["uses" => "StudentController@update"]);
-
+    Route::any("/detail/{id}", ["uses" => "StudentController@detail"]);
 });
 
 
