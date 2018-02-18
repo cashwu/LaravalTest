@@ -60,7 +60,7 @@ class StudentController extends Controller
                     "Student.sex" => "Sex",
                 ]);
 
-            if ($validator->fails()){
+            if ($validator->fails()) {
                 return redirect()->back()->withErrors($validator)->withInput();
             }
 
@@ -89,5 +89,40 @@ class StudentController extends Controller
         } else {
             return redirect()->back();
         }
+    }
+
+    public function update(Request $request, $id)
+    {
+        $student = Student::find($id);
+
+        if ($request -> isMethod("POST")) {
+
+            $this->validate($request, [
+                "Student.name" => "required|min:2|max:20",
+                "Student.age" => "required|integer",
+                "Student.sex" => "required|integer"
+            ], [
+                "required" => ":attribute 必填",
+                "min" => ":attribute 長度不符合要求",
+                "integer" => ":attribute 為整數"
+            ], [
+                "Student.name" => "Name",
+                "Student.age" => "Age",
+                "Student.sex" => "Sex",
+            ]);
+
+            $data = $request -> input("Student");
+            $student -> name = $data["name"];
+            $student -> age = $data["age"];
+            $student -> sex = $data["sex"];
+
+            if ($student->save()){
+                return redirect("/")->with("success", "update success");
+            }
+        }
+
+        return view("student.update", [
+            "student" => $student
+        ]);
     }
 }
