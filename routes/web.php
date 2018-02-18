@@ -127,3 +127,22 @@ Route::group(["prefix" => "user"], function (){
     });
 });
 
+Route::group(["prefix" => "product"], function(){
+
+    Route::get("/", "ProductController@productList");
+
+    Route::get("/create", "ProductController@productCreate");
+
+    Route::get("/manage", "ProductController@productManageList");
+
+    Route::group(["prefix" => "{product_id}" ], function(){
+
+        Route::get("/", "ProductController@productItem");
+
+        Route::get("/edit", "ProductController@productItemEdit");
+
+        Route::put("/", "ProductController@productItemUpdate");
+
+        Route::put("/buy", "ProductController@productItemBuy");
+    });
+});
