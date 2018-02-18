@@ -118,6 +118,12 @@ Route::group(["prefix" => "user"], function (){
         Route::get("/signUp", "UserAuthController@signUpGet");
 
         Route::post("/signUp", "UserAuthController@signUpPost");
+
+        Route::get("/signIn", "UserAuthController@signInGet");
+
+        Route::post("/signIn", "UserAuthController@signInPost");
+
+        Route::get("/signOut", "UserAuthController@signOut");
     });
 });
 
