@@ -9,9 +9,6 @@
         @include("components.errorMessage")
 
         <table class="table table-striped table-bordered table-hover">
-            {{--<caption>--}}
-            {{--<a class="btn btn-info" href="{{ url("product/create") }}">Create</a>--}}
-            {{--</caption>--}}
             <thead>
             <tr>
                 <th>Name</th>
