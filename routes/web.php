@@ -144,12 +144,12 @@ Route::group(["prefix" => "product"], function () {
             Route::post("/buy", "ProductController@productItemBuy");
         });
 
-//        Route::group(["middleware" => ["user.auth.admin"]], function () {
+        Route::group(["middleware" => ["user.auth.admin"]], function () {
 
-            Route::get("/edit", "ProductController@productItemEdit")->middleware(['user.auth.admin']);
+            Route::get("/edit", "ProductController@productItemEdit");
 
-            Route::put("/", "ProductController@productItemUpdate");
+            Route::put("/edit", "ProductController@productItemEditPut");
 
-//        });
+        });
     });
 });

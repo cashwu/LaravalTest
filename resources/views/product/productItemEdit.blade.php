@@ -10,7 +10,7 @@
 
         @include("components.errorMessage")
 
-        <form action="/product/{{$product->id}}"
+        <form action="/product/{{$product->id}}/edit"
             method="post" enctype="multipart/form-data" >
 
             {{ method_field("PUT") }}
