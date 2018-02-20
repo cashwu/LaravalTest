@@ -84,7 +84,8 @@
 
                 <div class="links">
                     <a href="{{ url("/user/auth/signIn")  }}">SignIn</a>
-                    <a href="{{ url("/product/manage") }}">Product</a>
+                    <a href="{{ url("/product/manage") }}">Product Manage</a>
+                    <a href="{{ url("/product") }}">Product List</a>
                 </div>
             </div>
         </div>

@@ -153,3 +153,5 @@ Route::group(["prefix" => "product"], function () {
         });
     });
 });
+
+Route::get("/transaction", "TransactionController@transactionList")->middleware(["user.auth"]);

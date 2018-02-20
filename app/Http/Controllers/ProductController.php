@@ -107,11 +107,7 @@ class ProductController extends Controller
                 ->OrderBy("id", "desc")
                 ->paginate($rowPerPage);
 
-        foreach ($productPaginate as &$product) {
-            if (!is_null($product->photo)){
-                $product->photo = url($product->photo);
-            }
-        }
+        $productPaginate = $this->setProductPhotoUrl($productPaginate);
 
         $model = [
             "title" => "product management",
@@ -121,6 +117,23 @@ class ProductController extends Controller
         return view("product.productManage", $model);
     }
 
+    public function productList()
+    {
+        $rowPerPage = 10;
+
+        $productPaginate = Product::OrderBy("updated_at", "desc")
+            ->where("status", "S")
+            ->paginate($rowPerPage);
+
+        $productPaginate = $this->setProductPhotoUrl($productPaginate);
+
+        $model = [
+            "title" => "product list",
+            "productPaginate" => $productPaginate
+        ];
+
+        return view("product.productList", $model);
+    }
 
     /**
      * @param $product_id
@@ -129,6 +142,21 @@ class ProductController extends Controller
     private function getProductByProductId($product_id)
     {
         return Product::findOrFail($product_id);
+    }
+
+    /**
+     * @param $productPaginate
+     * @return mixed
+     */
+    private function setProductPhotoUrl($productPaginate)
+    {
+        foreach ($productPaginate as &$product) {
+            if (!is_null($product->photo)) {
+                $product->photo = url($product->photo);
+            }
+        }
+
+        return $productPaginate;
     }
 
 }

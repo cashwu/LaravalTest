@@ -19,8 +19,8 @@
             <label for="">
                 商品狀態
                 <select name="status" id="">
-                    <option value="C" @if(old("status", $product->statue) == "C") selected @endif >建立中</option>
-                    <option value="S" @if(old("status", $product->statue) == "S") selected @endif >可販售</option>
+                    <option value="C" @if(old("status", $product->status) == "C") selected @endif >建立中</option>
+                    <option value="S" @if(old("status", $product->status) == "S") selected @endif >可販售</option>
                 </select>
             </label>
             <br>
