@@ -111,9 +111,9 @@ Route::get('/', function () {
 //->where("id", "[0-9]+");
 
 
-Route::group(["prefix" => "user"], function (){
+Route::group(["prefix" => "user"], function () {
 
-    Route::group(["prefix" => "auth"], function(){
+    Route::group(["prefix" => "auth"], function () {
 
         Route::get("/signUp", "UserAuthController@signUpGet");
 
@@ -127,22 +127,29 @@ Route::group(["prefix" => "user"], function (){
     });
 });
 
-Route::group(["prefix" => "product"], function(){
+Route::group(["prefix" => "product"], function () {
 
     Route::get("/", "ProductController@productList");
 
-    Route::get("/create", "ProductController@productCreate");
+    Route::get("/create", "ProductController@productCreate")->middleware(["user.auth.admin"]);
 
-    Route::get("/manage", "ProductController@productManageList");
+    Route::get("/manage", "ProductController@productManageList")->middleware(["user.auth.admin"]);
 
-    Route::group(["prefix" => "{product_id}" ], function(){
+    Route::group(["prefix" => "{product_id}"], function () {
 
         Route::get("/", "ProductController@productItem");
 
-        Route::get("/edit", "ProductController@productItemEdit");
+        Route::group(["middleware" => ["user.auth"]], function () {
 
-        Route::put("/", "ProductController@productItemUpdate");
+            Route::post("/buy", "ProductController@productItemBuy");
+        });
 
-        Route::put("/buy", "ProductController@productItemBuy");
+//        Route::group(["middleware" => ["user.auth.admin"]], function () {
+
+            Route::get("/edit", "ProductController@productItemEdit")->middleware(['user.auth.admin']);
+
+            Route::put("/", "ProductController@productItemUpdate");
+
+//        });
     });
 });
