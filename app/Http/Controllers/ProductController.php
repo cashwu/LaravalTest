@@ -10,8 +10,11 @@ namespace App\Http\Controllers;
 
 
 use App\Entity\Product;
+use App\Entity\Transaction;
+use App\Entity\User;
 use Image;
 use Validator;
+use DB;
 
 class ProductController extends Controller
 {
@@ -147,6 +150,78 @@ class ProductController extends Controller
         ];
 
         return view("product.productItem", $model);
+    }
+
+    public function productItemBuy($product_id)
+    {
+        $input = request()->all();
+
+        $rules = [
+            "count" => ["required", "integer", "min:1"]
+        ];
+
+        $validator = Validator::make($input, $rules);
+
+        if ($validator->fails())
+        {
+            return redirect("/product/".$product_id)
+                    ->withErrors($validator)
+                    ->withInput();
+        }
+
+        try{
+
+            $userId = session()->get("user_id");
+            $user = User::findOrFail($userId);
+
+            DB::beginTransaction();
+
+            $product = Product::findOrFail($product_id);
+            $count = $input["count"];
+
+            $remainCount = $product -> count - $count;
+
+            if ($remainCount < 0){
+                throw new Exception("count < 0");
+            }
+
+            $product->count = $remainCount;
+            $product->save();
+
+            $totalPrice = $count * $product->price;
+
+            $transaction = [
+                "user_id" => $userId,
+                "product_id" => $product_id,
+                "price" => $product -> price,
+                "count" => $count,
+                "total_price" => $totalPrice
+            ];
+
+            Transaction::create($transaction);
+
+            DB::commit();
+
+            $msg = [
+                "msg" => [ "success" ]
+            ];
+
+            return redirect()
+                    ->to("/product/".$product_id)
+                    ->withErrors($msg);
+
+        }catch(Exception $exception){
+            DB::rollBack();
+
+            $msg = [
+                "msg" => $exception->getMessage()
+            ];
+
+            return redirect()
+                ->back()
+                ->withErrors($msg)
+                ->withInput();
+        }
     }
 
     /**
