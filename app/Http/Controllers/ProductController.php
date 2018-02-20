@@ -99,6 +99,29 @@ class ProductController extends Controller
         return redirect("/product/".$product_id."/edit");
     }
 
+    public function productManageList()
+    {
+        $rowPerPage = 10;
+
+        $productPaginate = Product::OrderBy("created_at", "desc")
+                ->OrderBy("id", "desc")
+                ->paginate($rowPerPage);
+
+        foreach ($productPaginate as &$product) {
+            if (!is_null($product->photo)){
+                $product->photo = url($product->photo);
+            }
+        }
+
+        $model = [
+            "title" => "product management",
+            "productPaginate" => $productPaginate
+        ];
+
+        return view("product.productManage", $model);
+    }
+
+
     /**
      * @param $product_id
      * @return mixed
