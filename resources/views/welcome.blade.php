@@ -86,6 +86,7 @@
                     <a href="{{ url("/user/auth/signIn")  }}">SignIn</a>
                     <a href="{{ url("/product/manage") }}">Product Manage</a>
                     <a href="{{ url("/product") }}">Product List</a>
+                    <a href="{{ url("/transaction") }}">Transaction List</a>
                 </div>
             </div>
         </div>

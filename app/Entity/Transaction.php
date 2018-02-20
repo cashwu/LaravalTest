@@ -25,4 +25,9 @@ class Transaction extends Model
         "count",
         "total_price",
     ];
+
+    public function Product()
+    {
+        return $this->hasOne("App\Entity\Product", "id", "product_id");
+    }
 }
