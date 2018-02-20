@@ -52,7 +52,7 @@
                 Photo
                 <input type="file" name="photo"
                        placeholder="photo" >
-                <img src="{{ $product -> photo or "/assets/images/default-product.png" }}">
+                <img src="{{ $product -> photo or "/assets/images/default-product.png" }}" style="width: 30px; height: 30px;">
             </label>
             <br>
             <label>
